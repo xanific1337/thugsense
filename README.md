@@ -18,7 +18,7 @@
   </div>
 </div>
 
-## BEWARE, THIS DOCUMENTATION MIGHT BE WRONG SO I HARDLY THINK YOU SHOULD CHECK example.lua OUT! <a href="https://raw.githubusercontent.com/xanific1337/thugsense/refs/heads/main/example.lua"> example.lua.
+## BEWARE, THIS DOCUMENTATION MIGHT BE WRONG SO I HARDLY THINK YOU SHOULD CHECK <a href="https://raw.githubusercontent.com/xanific1337/thugsense/refs/heads/main/example.lua">example.lua</a> OUT! .
 
 ## Getting Started
 
