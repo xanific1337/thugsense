@@ -1,140 +1,260 @@
-# thugsense
+### Elements
 
-    // Made by samet \\
+- Window
 
-    Assign different flags to each element to prevent from configs overriding eachother
-    Example script is at the bottom
+  ```lua
+  local window = library:Window({
+    name = "Example Window",
+    size = UDim2.fromOffset(500, 650)
+  })
+  ```
 
-    Documentation:
-    function Library:Window(Data: table
-        Name/name: string,
-        Size/size: UDim2
-    )
+- Page
 
-    function Window:Page(Data: table
-        Name/name: string,
-        Columns/columns: number,
-        SubTabs/subtabs: boolean
-    )
+  ```lua
+  local page = window:Page({
+    name = "Main Page",
+    columns = 2,
+    subtabs = true
+  })
+  ```
 
-    function Page:SubPage(Data: table
-        Icon/icon: string,
-        Columns/columns: number
-    )
+- SubPage
 
-    function Page:Section(Data: table
-        Name/name: string,
-        Side/side: number,
-    )
+  ```lua
+  local subpage = page:SubPage({
+    icon = "rbxassetid://123456",
+    columns = 2
+  })
+  ```
 
-    function Page:MultiSection(Data: table
-        Sections/sections: table,
-        Side/side: number
-    )
+- Section
 
-    function Page:ScrollableSection(Data: table
-        Name/name: string,
-        Side/side: number,
-        Size/size: number
-    )
+  ```lua
+  local section = page:Section({
+    name = "General Settings",
+    side = 1
+  })
+  ```
 
-    function Section:Divider()
+- MultiSection
 
-    function Section:Label(Data: table
-        Name/name: string,
-        Alignment/alignment: string
-    )
+  ```lua
+  local multisection = page:MultiSection({
+    sections = {"Section A", "Section B"},
+    side = 2
+  })
+  ```
 
-    function Section:Toggle(Data: table
-        Name/name: string,
-        Default/default: boolean,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+- ScrollableSection
 
-    function Section:Button(Data: table
-        Name/name: string,
-        Callback/callback: function
-    )
+  ```lua
+  local scroll = page:ScrollableSection({
+    name = "Scrollable Area",
+    side = 1,
+    size = 250
+  })
+  ```
 
-    function Section:Slider(Data: table
-        Name/name: string,
-        Min/min: number,
-        Max/max: number,
-        Decimals/decimals: number,
-        Default/default: number,
-        Suffix/suffix: string,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+- Divider
 
-    function Section:Textbox(Data: table
-        Name/name: string,
-        Default/default: string,
-        Placeholder/placeholder: string,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+  ```lua
+  section:Divider()
+  ```
 
-    function Section:Dropdown(Data: table
-        Name/name: string,
-        Items/items: table,
-        Default/default: string,
-        Flag/flag: string,
-        Multi/multi: boolean,
-        Callback/callback: function
-    )
+- Label
 
-    function Section:Listbox(Data: table
-        Size/size: number,
-        Items/items: table,
-        Default/default: string,
-        Multi/multi: boolean,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+  ```lua
+  local lbl = section:Label({
+    name = "Status: Ready",
+    alignment = "Center"
+  })
+  ```
 
-    function Label:Keybind(Data: table
-        Name/name: string,
-        Mode/mode: string,
-        Default/default: EnumItem,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+- Toggle
 
-    function Label:Colorpicker(Data: table
-        Name/name: string,
-        Default/default: Color3,
-        Alpha/alpha: boolean,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+  ```lua
+  section:Toggle({
+    name = "Enable Feature",
+    default = false,
+    flag = "EnableFeature",
+    callback = function(value)
+      print("Toggle:", value)
+    end
+  })
+  ```
 
-    function Toggle:Colorpicker(Data: table
-        Name/name: string,
-        Default/default: Color3,
-        Alpha/alpha: boolean,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+- Button
 
-    function Toggle:Keybind(Data: table
-        Name/name: string,
-        Mode/mode: string,
-        Default/default: EnumItem,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+  ```lua
+  section:Button({
+    name = "Click Me",
+    callback = function()
+      print("Button clicked!")
+    end
+  })
+  ```
 
-    function Sections:Textbox(Data: table
-        Name/name: string,
-        Default/default: string,
-        Placeholder/placeholder: string,
-        Flag/flag: string,
-        Callback/callback: function
-    )
+- Slider
 
-    function Library:Watermark(Name: string)
-    function Library:Notification(Text: string, Duration: number, Color: Color3, Icon: table)
-    function Library:KeybindList()
+  ```lua
+  section:Slider({
+    name = "Volume",
+    min = 0,
+    max = 100,
+    decimals = 1,
+    default = 50,
+    suffix = "%",
+    flag = "VolumeLevel",
+    callback = function(value)
+      print("Volume:", value)
+    end
+  })
+  ```
 
+- Textbox
+
+  ```lua
+  section:Textbox({
+    name = "Username",
+    default = "Player",
+    placeholder = "Enter your name",
+    flag = "Username",
+    callback = function(text)
+      print("Text:", text)
+    end
+  })
+  ```
+
+- Dropdown
+
+  ```lua
+  section:Dropdown({
+    name = "Mode",
+    items = {"Easy", "Normal", "Hard"},
+    default = "Normal",
+    flag = "GameMode",
+    multi = false,
+    callback = function(option)
+      print("Selected:", option)
+    end
+  })
+  ```
+
+- Listbox
+
+  ```lua
+  section:Listbox({
+    size = 120,
+    items = {"Item1", "Item2", "Item3"},
+    default = "Item2",
+    multi = false,
+    flag = "ListChoice",
+    callback = function(option)
+      print("Chosen:", option)
+    end
+  })
+  ```
+
+- Keybind (Label)
+
+  ```lua
+  section:Label({
+    name = "Hotkey"
+  }):Keybind({
+    name = "Bind",
+    mode = "Toggle", -- "Toggle", "Hold", etc.
+    default = Enum.KeyCode.F,
+    flag = "Hotkey",
+    callback = function(active)
+      print("Hotkey active:", active)
+    end
+  })
+  ```
+
+- Colorpicker (Label)
+
+  ```lua
+  section:Label({
+    name = "Label Color"
+  }):Colorpicker({
+    name = "Pick a Color",
+    default = Color3.new(1, 1, 1),
+    alpha = true,
+    flag = "LabelColor",
+    callback = function(color, alpha)
+      print("Color:", color, "Alpha:", alpha)
+    end
+  })
+  ```
+
+- Colorpicker (Toggle)
+
+  ```lua
+  section:Toggle({
+    name = "Colored Toggle",
+    default = true,
+    flag = "ColoredToggle",
+    callback = function(v) end
+  }):Colorpicker({
+    name = "Toggle Color",
+    default = Color3.new(0, 1, 0),
+    alpha = true,
+    flag = "ToggleColor",
+    callback = function(color, alpha)
+      print("Toggle Color:", color, "Alpha:", alpha)
+    end
+  })
+  ```
+
+- Keybind (Toggle)
+
+  ```lua
+  section:Toggle({
+    name = "Keybind Toggle",
+    default = false,
+    flag = "KeyToggle",
+    callback = function(v) end
+  }):Keybind({
+    name = "Toggle Key",
+    mode = "Hold",
+    default = Enum.KeyCode.E,
+    flag = "KeyToggleBind",
+    callback = function(active)
+      print("Keybind active:", active)
+    end
+  })
+  ```
+
+- Textbox (Sections alias)
+
+  ```lua
+  -- If your API exposes a Sections alias:
+  sections:Textbox({
+    name = "Alias Textbox",
+    default = "Text",
+    placeholder = "Type here",
+    flag = "AliasTextbox",
+    callback = function(text)
+      print("Alias:", text)
+    end
+  })
+  ```
+
+- Watermark
+
+  ```lua
+  library:Watermark("My Watermark")
+  ```
+
+- Notification
+
+  ```lua
+  library:Notification("Hello World!", 5, Color3.new(1, 0, 0), { Icon = "rbxassetid://123456" })
+  ```
+
+- KeybindList
+
+  ```lua
+  library:KeybindList()
+  ```
