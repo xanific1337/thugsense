@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <h3 align="center">Vaderpaste User Interface</h3>
+  <h3 align="center">thugsense User Interface</h3>
 
   <p align="center">
     A user interface that supports roblox script executor lua. 
