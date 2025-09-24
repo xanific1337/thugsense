@@ -18,6 +18,7 @@
   </div>
 </div>
 
+## BEWARE, THIS DOCUMENTATION MIGHT BE WRONG SO I HARDLY THINK YOU SHOULD CHECK  <a href="https://raw.githubusercontent.com/xanific1337/thugsense/refs/heads/main/example.lua"> out.
 
 ## Getting Started
 
