@@ -1,3 +1,24 @@
+<br />
+<div align="center">
+  <h3 align="center">Vaderpaste User Interface</h3>
+
+  <p align="center">
+    A user interface that supports roblox script executor lua. 
+    <br />
+    <br />
+    <a href="https://raw.githubusercontent.com/xanific1337/thugsense/refs/heads/main/example.lua">View Demo</a>
+    &middot;
+    <a href="https://discord.gg/Zk3wWmxEST">Report Bug</a>
+    &middot;
+    <a href="https://discord.gg/Zk3wWmxEST">Request Feature</a>
+  </p>
+
+  <div align="center">
+    <img src="https://github.com/xanific1337/thugsense/blob/main/image.png?raw=true)" alt="thugsense preview" />
+  </div>
+</div>
+
+
 ## Getting Started
 
 This will go through how to use the library in your executor.
